@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <!-- Header -->
+  <header class="flex items-center justify-between p-4 border-b">
+    <h1 class="text-2xl font-bold">Shop.</h1>
+    <nav class="flex items-center gap-6">
+      <a href="#" class="text-lg font-medium">Home</a>
+      <a href="#" class="relative">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2.25l1.5 9h12l1.5-9H21M5.25 12h13.5M9.75 15.75a2.25 2.25 0 104.5 0" />
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Main Section -->
+  <main class="p-6 grid grid-cols-12 gap-4">
+    <!-- Sidebar -->
+    <aside class="col-span-3">
+      <h2 class="text-green-600 text-lg font-bold mb-4">Customize Own Design</h2>
+      <ul class="space-y-2">
+        <li><a href="#" class="text-gray-700 hover:underline">New Collection</a></li>
+        <li><a href="#" class="font-bold underline">All Products</a></li>
+        <li><a href="#" class="text-gray-700 hover:underline">Discounted Products</a></li>
+      </ul>
+      <h3 class="mt-6 font-semibold">Filter by:</h3>
+      <ul class="space-y-2 mt-2">
+        <li><a href="#" class="text-gray-700 hover:underline">Availability</a></li>
+        <li><a href="#" class="text-gray-700 hover:underline">Discount</a></li>
+      </ul>
+    </aside>
+
+    <!-- Products -->
+    <section class="col-span-9 grid grid-cols-3 gap-4">
+      <!-- Product Card -->
+      <div class="border rounded-lg overflow-hidden bg-gray-100">
+        <img src="https://via.placeholder.com/150" alt="Black T-shirt" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Black T-shirt</h3>
+          <p class="text-gray-500">$20</p>
+        </div>
+        <button class="w-full py-2 bg-gray-800 text-white hover:bg-gray-700">+</button>
+      </div>
+
+      <!-- Repeat Product Card with different colors -->
+      <div class="border rounded-lg overflow-hidden bg-yellow-100">
+        <img src="/image/demo.png" alt="Black T-shirt" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Black T-shirt</h3>
+          <p class="text-gray-500">$20</p>
+        </div>
+        <button class="w-full py-2 bg-gray-800 text-white hover:bg-gray-700">+</button>
+      </div>
+
+      <div class="border rounded-lg overflow-hidden bg-blue-100">
+        <img src="https://via.placeholder.com/150" alt="Black T-shirt" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Black T-shirt</h3>
+          <p class="text-gray-500">$20</p>
+        </div>
+        <button class="w-full py-2 bg-gray-800 text-white hover:bg-gray-700">+</button>
+      </div>
+
+      <!-- More product cards with different background colors -->
+      <div class="border rounded-lg overflow-hidden bg-pink-100">
+        <img src="https://via.placeholder.com/150" alt="Black T-shirt" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Black T-shirt</h3>
+          <p class="text-gray-500">$20</p>
+        </div>
+        <button class="w-full py-2 bg-gray-800 text-white hover:bg-gray-700">+</button>
+      </div>
+
+      <div class="border rounded-lg overflow-hidden bg-green-100">
+        <img src="https://via.placeholder.com/150" alt="Black T-shirt" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Black T-shirt</h3>
+          <p class="text-gray-500">$20</p>
+        </div>
+        <button class="w-full py-2 bg-gray-800 text-white hover:bg-gray-700">+</button>
+      </div>
+
+      <div class="border rounded-lg overflow-hidden bg-purple-100">
+        <img src="https://via.placeholder.com/150" alt="Black T-shirt" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Black T-shirt</h3>
+          <p class="text-gray-500">$20</p>
+        </div>
+        <button class="w-full py-2 bg-gray-800 text-white hover:bg-gray-700">+</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

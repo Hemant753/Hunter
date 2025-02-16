@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Hunter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Italiana&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Italiana&family=Karantina:wght@300;400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/styles/coll_.css">
+  <!-- <base href="/fashionHunter/User/"> -->
+</head>
+
+<body class="bg-white text-gray-800  ">
+  <!-- Navbar -->
+  <nav class=" text-2xl sticky top-0 shadow-md z-10">
+    <div class="container mx-auto px-6 py-4 flex justify-start gap-6 items-center">
+      <button id="menu-btn"
+        class="text-3xl focus:outline-none text-gray-800 hover:text-purple-600 cursor-pointer">
+        <i class="ri-menu-2-line"></i>
+      </button>
+      <a class="text-gray-800 hover:text-purple-600 cursor-pointer"><i class="ri-search-2-line"></i></a>
+      <a class="mx-auto text-2xl font-semibold font-i tracking-wide">Fashion <span
+          class="tracking-wide text-purple-600 font-i font-semibold">Hunter</span></a>
+      <!-- <div class="space-x-4"> -->
+      <!-- <a href="home" class="text-gray-800 hover:text-purple-600 m "><i class="ri-home-4-line"></i></a>
+            <a href="profile" class="text-gray-800 hover:text-purple-600 m "><i class="ri-account-circle-line"></i></a>
+            <a href="cart" class="text-gray-800 hover:text-purple-600 m "><i class="ri-shopping-cart-2-line"></i></a> -->
+      <!-- </div> -->
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="fixed top-0 left-0 w-72 h-full bg-white z-20 shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <button id="close-btn" class="text-5xl absolute top-4 right-4">&times;</button>
+    <ul class=" mt-24 space-y-6 text-center  " >
+      <base href="/fashionHunter/User/">
+        <li class="py-5" ><a href="home" class="block text-2xl font-semibold hover:text-gray-500">Home</a></li>
+        <li class="py-5" ><a href="about" class="block text-2xl font-semibold hover:text-gray-500">About</a></li>
+        <li class="py-5" ><a href="profile" class="block text-2xl font-semibold hover:text-gray-500">Profile</a></li>
+        <li class="py-5" ><a href="cart" class="block text-2xl font-semibold hover:text-gray-500">Cart</a></li>
+        <li class="py-5" ><a href="policy" class="block text-2xl font-semibold hover:text-gray-500">Policy</a></li>
+
+    </ul>
+</div>
+
+
+
+
+
+  <!-- Hero Section -->
+  <section class="bg-gray-200">
+    <div class="hero flex justify-center items-center">
+      <img src="/image/1.png" alt="Random Image" class="object-cover w-full h-full">
+    </div>
+  </section>
+
+  <!-- Tagline Section -->
+  <section class="py-12 flex flex-col justify-center items-center gap-12 ">
+    <div class="flex gap-12 text-xl text-center ">
+      <div>
+        <a href="/fashionHunter/User/shop/mens">
+          <div class="bg-purple-200 flex justify-center items-center rounded-full icon shadow-md "><i
+              class="ri-men-line"></i></div><span class="text-sm">Men</span>
+        </a>
+      </div>
+      <div>
+        <a href="/fashionHunter/User/shop/womens">
+          <div class="bg-purple-200 flex justify-center items-center rounded-full icon shadow-md "><i
+              class="ri-women-line"></i></div><span class="text-sm">Women</span>
+        </a>
+      </div>
+      <div>
+        <a href="/fashionHunter/User/shop/kids">
+          <div class="bg-purple-200 flex justify-center items-center rounded-full icon shadow-md "><i
+              class="ri-emoji-sticker-fill"></i></div><span class="text-sm">Kids</span>
+        </a>
+      </div>
+      <div>
+        <a href="/fashionHunter/User/shop/sales">
+          <div class="bg-purple-200 flex justify-center items-center rounded-full icon shadow-md "><i
+              class="ri-discount-percent-fill"></i></div><span class="text-sm">Sales</span>
+        </a>
+      </div>
+      <div>
+        <a href="/fashionHunter/User/shop/shoes">
+          <div class="bg-purple-200 flex justify-center items-center rounded-full icon shadow-md ">S</div><span
+            class="text-sm">Shoes</span>
+        </a>
+      </div>
+    </div>
+    <div class="container mx-auto text-center">
+      <h2 class="build font-bold tracking-widest leading-tight">BUILD TO BE<br> DIFFERENT</h2>
+    </div>
+    <div class=" wrapper bg-gray-100  h-12">
+
+      <div class="items ">T-shirt</div>
+      <div class="items ">Jeans</div>
+      <div class="items ">Blazer</div>
+      <div class="items ">Saree</div>
+      <div class="items ">Sweater</div>
+      <div class="items ">Jacket</div>
+      <div class="items ">Kurta</div>
+      <div class="items ">Hoodie</div>
+      <div class="items ">T-shirt</div>
+      <div class="items ">Jeans</div>
+      <div class="items ">Blazer</div>
+      <div class="items ">Saree</div>
+      <div class="items ">Sweater</div>
+      <div class="items ">Jacket</div>
+      <div class="items ">Kurta</div>
+      <div class="items ">Hoodie</div>
+
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-8 bg-gray-100">
+    <div class="mx-auto w-full max-w-7xl px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Left Column -->
+        <div class="relative">
+          <img src="/image/content_1.webp" class="object-cover w-full h-80 rounded-lg shadow-lg" alt="Main Banner">
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-75 rounded-lg"></div>
+          <div class="absolute bottom-6 left-6 text-white">
+            <h2 class="text-2xl font-bold">Shop the Look, Own the Moment</h2>
+            <p class="text-sm mt-2">Elevate your wardrobe with styles that define you.</p>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="grid grid-rows-2 gap-4">
+          <div class="relative">
+            <img src="/image/content_2.jpg" class="object-cover w-full h-40 rounded-lg shadow-lg"
+              alt="Secondary Banner 1">
+            <div class="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center">
+              <p class="text-white font-semibold text-lg">Your Journey Begins Here</p>
+            </div>
+          </div>
+          <div class="relative">
+            <img src="/image/content_3.jpg" class="object-cover w-full h-40 rounded-lg shadow-lg"
+              alt="Secondary Banner 2">
+            <div class="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center">
+              <p class="text-white font-semibold text-lg">From Vision to Reality</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- About Section -->
+
+  <section class="py-6 bg-gray-100">
+    <div id="string" class="mx-auto flex justify-center items-center ">
+      <svg width="1000" height="150">
+        <path d="M 10 100 Q 545 100 990 100" stroke="black" fill="transparent" />
+      </svg>
+    </div>
+    <div class="container mx-auto text-center">
+      <div class="">
+        <img src="/image/fh_logo.png" alt="Logo" class="mx-auto w-[300px] ">
+      </div>
+      <h3 class="text-2xl font-bold mb-4">Fashion Hunter</h3>
+      <p class="text-gray-600 max-w-3xl mx-auto">
+        At Fashion Hunter, we build styles that stand out from the masses. We bring
+        to you a unique collection of clothing that empowers you to express your individuality.
+        Explore our latest trends and redefine fashion in your way.
+      </p>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-12 bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50">
+    <div class="w-[98%] container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 px-6">
+      <!-- Blockquote 1 -->
+      <blockquote class="relative p-6 bg-white rounded-2xl shadow-lg border-l-8 border-gray-300">
+        <p class="text-gray-700 text-lg italic">
+          "This is my very first order through the site, and I am totally satisfied! The fit is great, and so are the
+          prices."
+        </p>
+        <span class="block mt-4 text-right text-sm font-bold text-zinc-600">- Happy Customer</span>
+      </blockquote>
+
+      <!-- Blockquote 2 -->
+      <blockquote class="relative p-6 bg-white rounded-2xl shadow-lg border-l-8 border-gray-300">
+        <p class="text-gray-700 text-lg italic">
+          "Excellent quality of fabric, and a great fit."
+        </p>
+        <span class="block mt-4 text-right text-sm font-bold text-zinc-600">- Satisfied Customer</span>
+      </blockquote>
+
+      <!-- Blockquote 3 -->
+      <blockquote class="relative p-6 bg-white rounded-2xl shadow-lg border-l-8 border-gray-300">
+        <p class="text-gray-700 text-lg italic">
+          "This is my very first order through the site, and I am totally satisfied! The fit is great, and so are the
+          prices."
+        </p>
+        <span class="block mt-4 text-right text-sm font-bold text-zinc-600">- Regular Buyer</span>
+      </blockquote>
+
+      <!-- Blockquote 4 -->
+      <blockquote class="relative p-6 bg-white rounded-2xl shadow-lg border-l-8 border-gray-300">
+        <p class="text-gray-700 text-lg italic">
+          "Quality of product is amazing. Very comfortable to touch, feel, and be in. Customer service is of absolute
+          resolve."
+        </p>
+        <span class="block mt-4 text-right text-sm font-bold text-zinc-600">- Loyal Customer</span>
+      </blockquote>
+    </div>
+  </section>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-gray-300 py-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <!-- About Us -->
+        <div>
+          <h3 class="text-lg font-semibold mb-2">About Us</h3>
+          <p class="text-sm text-gray-600">
+            We at Hunter strive to provide the best quality clothing and service at amazing prices with free and express
+            shipping and a delightful after-sales service.
+            <a href="#" class="text-blue-500">Read more.</a>
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Quick Links</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><a href="#" class="hover:text-gray-800">Profile</a></li>
+            <li><a href="#" class="hover:text-gray-800">Refund Policy</a></li>
+            <li><a href="#" class="hover:text-gray-800">Shipping Policy</a></li>
+            <li><a href="#" class="hover:text-gray-800">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-gray-800">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Support -->
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Customer Support</h3>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li><a href="#" class="hover:text-gray-800">Request a Return/Exchange</a></li>
+            <li><a href="#" class="hover:text-gray-800">Contact Us</a></li>
+            <li><a href="#" class="hover:text-gray-800">Sizing Chart</a></li>
+            <li><a href="#" class="hover:text-gray-800">About us</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Newsletter</h3>
+          <p class="text-sm text-gray-600 mb-3">Subscribe to get special offers, free giveaways, and once-in-a-lifetime
+            deals.</p>
+          <div class="flex border border-gray-300 rounded overflow-hidden">
+            <input type="email" placeholder="Email" class="p-2 flex-1 outline-none">
+            <button class="bg-yellow-700 text-white px-4">JOIN</button>
+          </div>
+        </div>
+      </div>
+      <div class="text-center text-sm text-gray-500 mt-6">
+        © FashionHunter 2025
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/js/coll_.js"></script>
+</body>
+
+</html>

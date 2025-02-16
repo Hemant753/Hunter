@@ -1,20 +1,30 @@
+import express from 'express';
+import connect from './db/db.js';
+import user from './models/user.model.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import cookieParser from 'cookie-parser';
+import userRoute from './routes/user.routes.js';
+import adminRoute from './routes/admin.routes.js';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const express = require('express');
+
 const app = express();
-const mong = require('./models/mongo');
-const path = require('path');
+connect();
 
 app.use( express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
 
 
-app.get("/", (req,res)=>{
-    res.send("Hello");
-})
 
-app.listen(3000, ()=>{
-    console.log('http//:localhost3000');
-    
-})
+
+app.use("/fashionHunter/User", userRoute);
+app.use("/fashionHunter/Admin", adminRoute);
+
+
+
+export default app;

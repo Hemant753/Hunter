@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="adminApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <base href="/fashionHunter/admin/">
+</head>
+
+<body ng-controller="adminCtrl" class="font-sans bg-gray-100">
+    <header class="bg-white shadow-md px-6 py-2 flex justify-between items-center cursor-pointer">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <h1 class="text-xl font-bold">Admin Panel.</h1>
+            <a href="#" class="text-black font-medium hover:text-black">Home</a>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="min-w-[300px] h-screen bg-gray-200 p-4 text-center ">
+            <ul class="space-y-2 mt-16 ">
+                <li><a href="allproduct" class=" text-gray-500 hover:text-gray-700 ">All Products</a></li>
+                <li><a href="newproduct" class=" text-gray-700 hover:text-gray-700 font-bold ">Create New Products</a></li>
+            </ul>
+        </aside>
+        <main class=" create w-51 p-6">
+            <h2 class="text-xl font-bold mb-4 pb-3 border-b-4 ">Create New Product</h2>
+            <div style="display: flex; gap: 5px; ">
+                <section class="w-1/2">
+                    <form id="product-form" class="space-y-14" method="post" action="/fashionHunter/admin/create" enctype="multipart/form-data" > <!-- Form Section -->
+                        <div> <!-- Product Details -->
+                            <h3 class="font-medium text-xl  mb-2">Product Details</h3>
+                            <div class="space-y-2">
+                                <div>
+                                    <label class="text-gray-600">Product Image (PNG)</label>
+                                    <input type="file" id="fileInput" name="img1" accept=".png"
+                                        style=" margin-top: 5px; margin-left:15px; width: 100px; ">
+                                </div>
+                                <div>
+                                    <label class="text-gray-600">Product Image (ANY)</label>
+                                    <input type="file" id="fileInput" name="img2"
+                                        style=" margin-top: 5px; margin-left:15px; width: 100px; ">
+                                </div>
+                                <div>
+                                    <input type="text" id="product-name" ng-model="product.name"
+                                        placeholder="Product Name" name="productName"
+                                        class=" rounded p-2 outline-none bg-gray-300 text-black my-2 "
+                                        style="width: 17rem;"> <!-- Inputs -->
+                                    <div class="flex gap-4 my-2 ">
+                                        <input type="number" id="product-price" ng-model="product.price"
+                                            placeholder="Product Price" name="productPrice"
+                                            class=" w-32 rounded p-2 outline-none bg-gray-300 text-gray-600 ">
+                                        <input type="number" id="discount-price" ng-model="product.disPrice"
+                                            placeholder="Discount %" name="discountPrice"
+                                            class=" w-32 rounded p-2 outline-none bg-gray-300 text-gray-600 ">
+                                    </div>
+                                    <input type="text" id="product-name" ng-model="product.category"
+                                    placeholder="Men, Female, Kids" name="category"
+                                    class=" rounded p-2 outline-none bg-gray-300 text-black my-2 "
+                                    style="width: 23rem;"> <!-- Inputs -->
+                                    <textarea name="desc" id="desc" class=" my-2 p-2 w-[370px] bg-gray-300 text-gray-600 outline-none resize-none " ></textarea>
+                                </div>
+                            </div>
+ 
+                            <!-- Panel Details -->
+                            <div>
+                                <h3 class="font-bold text-gray-900 mt-12 mb-2">Panel Details</h3>
+                                <div class=" w-80 grid grid-cols-2 gap-3">
+                                    <div>
+                                        <!-- <label class="text-gray-600 font-medium">Background Color</label> -->
+                                        <input type="color" id="panelColor" name="panelColor" ng-model="product.panelColor"
+                                            class="border border-gray-300 rounded w-32 h-10 "  >
+                                    </div>
+                                    <div>
+                                        <!-- <label class="text-gray-600 font-medium">Panel Color</label> -->
+                                        <input type="color" id="bottompanel" name="bottomColor" ng-model="product.bottompanel"
+                                            class="border border-gray-300 rounded w-32 h-10 ">
+                                    </div>
+                                    <div>
+                                        <!-- <label class="text-gray-600 font-medium">Text Color</label> -->
+                                        <input type="color" id="textColor" name="textColor" ng-model="product.textColor"
+                                            class="border border-gray-300 rounded w-32 h-10 ">
+                                    </div>
+                                    <div>
+                                        <!-- <label class="text-gray-600 font-medium">Text Color</label> -->
+                                        <input type="color" id="textColor" name="DisColor" ng-model="product.disColor"
+                                            class="border border-gray-300 rounded w-32 h-10 ">
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" value="Publish" class="py-1 px-3 rounded-full font-bold text-white  bg-green-500 mt-20 "  >
+                        </form>
+                </section>
+                <section class="w-1/2 mt-10 ml-56 ">
+                    <h3 class="font-medium text-xl mb-4">Live Preview</h3>
+                    <div class=" shadow text-center h-74 " ng-style="{'background-color': product.panelColor}"
+                        style="width: 220px;">
+                        <div class="h-52 flex justify-center">
+                            <img src=" " id="previewImage" class=" h-52 w-52 object-cover ">
+                        </div>
+                        <div class=" py-1 px-3 h-18  flex flex-col items-start justify-center "
+                            ng-style="{'background-color': product.bottompanel, 'color':product.textColor }">
+                            <div class="font-medium   " ng-bind="product.name"></div>
+                            <div class="flex w-full justify-between " >
+                                <div class="font-medium   " ng-bind="product.finalPrice | currency:'$' "></div>
+                                <div class="w-10 h-5 rounded-full font-bold text-sm  " ng-style="{'background-color': product.disColor, 'color':product.textColor }"  ><span ng-bind="product.disPrice" ></span>% </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <!-- </div> -->
+                </section>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="/js/a_newProd.js"></script>
+</body>
+
+</html>

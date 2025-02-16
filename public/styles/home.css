@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inria Sans", serif;
+
+    font-style: normal;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+html, body {
+    height: 100%; /* Ensure both html and body fill the viewport height */
+    margin: 0;    /* Remove default margin */
+    padding: 0;   /* Remove default padding */
+    overflow: hidden; /* Prevent extra scrollbars */
+    display: flex;
+    flex-direction: column; /* For layouts with nav, main, and footer */
+}
+
+body{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.shirt{
+    width: 420px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.507));
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Hunter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Italiana&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Italiana&family=Karantina:wght@300;400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/styles/shop_new.css">
+</head>
+
+<body class="bg-white text-gray-800  ">
+  <!-- Navbar -->
+  <nav class=" text-2xl sticky top-0 shadow-md z-10">
+    <div class="container mx-auto px-6 py-4 flex justify-start gap-6 items-center">
+      <button id="menu-btn"
+        class="text-3xl focus:outline-none text-gray-800 hover:text-purple-600 cursor-pointer">
+        <i class="ri-menu-2-line"></i>
+      </button>
+      <a class="text-gray-800 hover:text-purple-600 cursor-pointer"><i class="ri-search-2-line"></i></a>
+      <a class="mx-auto text-2xl font-semibold font-i tracking-wide">Fashion <span
+          class="tracking-wide text-purple-600 font-i font-semibold">Hunter</span></a>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="fixed top-0 left-0 w-72 h-full bg-white z-20 shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <button id="close-btn" class="text-5xl absolute top-4 right-4">&times;</button>
+    <ul class=" mt-24 space-y-6 text-center  " >
+      <base href="/fashionHunter/User/">
+        <li class="py-5" ><a href="home" class="block text-2xl font-semibold hover:text-gray-500">Home</a></li>
+        <li class="py-5" ><a href="about" class="block text-2xl font-semibold hover:text-gray-500">About</a></li>
+        <li class="py-5" ><a href="profile" class="block text-2xl font-semibold hover:text-gray-500">Profile</a></li>
+        <li class="py-5" ><a href="cart" class="block text-2xl font-semibold hover:text-gray-500">Cart</a></li>
+        <li class="py-5" ><a href="policy" class="block text-2xl font-semibold hover:text-gray-500">Policy</a></li>
+
+    </ul>
+</div>
+
+<div class="sidebar h-full w-64 flex flex-col items-center justify-start ">  
+    <label for="priceFilter" class="font-semibold mt-12 " >Filter:</label>
+    <select id="priceFilter" class="border-2 border-zinc-600 p-2 rounded-full  font-medium " onchange="filterProducts()">
+        <option value="low-high">Low to High price</option>
+        <option value="high-low">High to Low price</option>
+    </select>
+    <br><br>
+    <div class="flex flex-col gap-2 w-full max-w-sm">
+      <label for="priceRange" class="font-semibold text-gray-700">Price Range:</label>
+      
+      <div class="flex items-center justify-between text-sm text-gray-600">
+          <span id="minPrice">$20</span>
+          <span id="selectedPrice" class="font-semibold text-gray-800">$300</span>
+          <span id="maxPrice">$600</span>
+      </div>
+  
+      <input type="range" id="priceRange" min="20" max="600" step="10"
+          class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500 hover:accent-blue-600 focus:outline-none"
+          oninput="updatePrice(this.value); filterProducts();">
+  
+  </div>
+</div>
+    <main>
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for products...">
+                <button onclick="filterProducts()">🔍</button>
+            </div>
+            <div id="productGrid" class="product-grid"></div>
+        </div>
+    </main>
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/js/coll_.js"></script>
+   <script>
+
+const products = <%- JSON.stringify(product) %>;
+
+function updatePrice(value) {
+    document.getElementById("selectedPrice").textContent = `$${value}`;
+} 
+
+function displayProducts(filteredProducts) {
+    const productGrid = document.getElementById("productGrid");
+    productGrid.innerHTML = ""; // Clear previous products
+
+    filteredProducts.forEach(product => {
+        const div = document.createElement("div");
+        div.classList.add("product");
+
+        div.innerHTML = `
+    <a href="/fashionHunter/User/Product/${product._id}">
+        <div class="shadow text-center h-74" style="width: 220px; background-color: ${product.panelColor};">
+            <div class="h-52 flex justify-center">
+                <img src="/image/products/${product.images_1}" alt="${product.name}" class="h-52 w-52 object-cover">
+            </div>
+            <div class="py-1 px-3 h-18 flex flex-col items-start justify-center" style="background-color: ${product.bottomColor};">
+                <div class="font-medium" style="color: ${product.textColor};">${product.name}</div>
+                <div class="flex w-full justify-between">
+                    <div class="font-medium" style="color: ${product.textColor};">$${product.FinalPrice}</div>
+                    <div class="w-10 h-5 rounded-full font-bold text-sm flex items-center justify-center" 
+                         style="background-color: ${product.DisColor}; color: white;">
+                        ${product.Discount}%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+`;
+
+
+        productGrid.appendChild(div);
+    });
+}
+
+
+
+function filterProducts() {
+    const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+    const priceFilter = document.getElementById("priceFilter").value;
+    const maxPrice = Number(document.getElementById("priceRange").value); // Convert to number
+
+    let filtered = products.filter(product => {
+        return product.name.toLowerCase().includes(searchQuery) && 
+               Number(product.FinalPrice) <= maxPrice;
+    });
+
+    if (priceFilter === "low-high") {
+        filtered.sort((a, b) => a.FinalPrice - b.FinalPrice);
+    } else if (priceFilter === "high-low") {
+        filtered.sort((a, b) => b.FinalPrice - a.FinalPrice);
+    }
+
+    displayProducts(filtered);
+}
+
+
+
+displayProducts(products);
+   </script>
+</body>
+</html>

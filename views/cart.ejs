@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <header class="bg-white shadow-md px-6 py-2 flex justify-between items-center cursor-pointer">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Cart.</h1>
+                <a href="#" class="mr-4 hover:text-gray-400  font-medium ">Home</a>
+        </div>
+    </header>
+
+    <!-- Cart Container -->
+    <div class="container mx-auto p-6 flex flex-col md:flex-row gap-6">
+        
+        <!-- Products Section -->
+        <div class="w-full md:w-2/3 flex flex-col gap-4  "  id="cart-container">
+            <!-- Product Card -->
+            <!-- <div class="cart-item bg-white p-4 shadow-md rounded-lg flex items-center">
+                <div class="w-24 h-24 bg-purple-200 flex items-center justify-center">
+                    <img src="image_url" alt="Black Tshirt">
+                </div>
+                <div class="ml-4 flex-1">
+                    <h2 class="text-lg font-semibold">Black Tshirt</h2>
+                    <div class="flex items-center mt-2">
+                        <button class="bg-gray-300 px-2 py-1 rounded" onclick="updateQuantity(0, -1)">-</button>
+                        <span class="quantity px-4">1</span>
+                        <button class="bg-gray-300 px-2 py-1 rounded" onclick="updateQuantity(0, 1)">+</button>
+                    </div>
+                    <p class="text-gray-600 mt-2">Net Total: <span class="netTotal">$20</span></p>
+                </div>
+            </div> -->
+
+        </div>
+
+        <!-- Price Breakdown -->
+        <div class="w-full md:w-1/3 bg-white p-4 border-l-2 ">
+            <h2 class="text-xl font-semibold">Price Breakdown</h2>
+            <hr class="my-2">
+            <p>Total MRP: <span class="float-right">$<span id="totalMRP">40</span></span></p>
+            <p>Discount on MRP: <span class="float-right">$0</span></p>
+            <p>Shipping Charges: <span class="float-right text-green-500">FREE</span></p>
+            <hr class="my-2">
+            <p class="font-semibold text-lg">Total Amount: <span class="float-right text-blue-600">$<span id="totalAmount">40</span></span></p>
+            <div class="flex gap-4 mt-4">
+                <button class="bg-black text-white font-medium px-3 py-2 rounded" onclick="confirmOrder()">Place Order</button>            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Store the cart items passed from the backend into the `cart` array
+        let cart = <%- JSON.stringify(items) %>;
+    
+        function updateQuantity(index, change) {
+            if (cart[index].quantity + change >= 1) {
+                cart[index].quantity += change;
+                renderCart();
+            }
+        }
+    
+        function renderCart() {
+            let cartContainer = document.getElementById("cart-container");
+            cartContainer.innerHTML = "";
+            let totalMRP = 0;
+            let totalAmount = 0;
+    
+            cart.forEach((item, index) => {
+                totalMRP += item.quantity * item.price * 2;
+                totalAmount += item.quantity * item.price;
+    
+                cartContainer.innerHTML += `
+                    <div class="cart-item bg-white p-4 shadow-md rounded-lg flex items-center mb-4">
+                        <div class="w-20 h-20 flex items-center justify-center bg-gray-200 rounded">
+                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover rounded">
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <h2 class="text-lg font-semibold">${item.name}</h2>
+                            <div class="flex items-center mt-2">
+                                <button class="bg-gray-300 px-2 py-1 rounded" onclick="updateQuantity(${index}, -1)">-</button>
+                                <span class="quantity px-4">${item.quantity}</span>
+                                <button class="bg-gray-300 px-2 py-1 rounded" onclick="updateQuantity(${index}, 1)">+</button>
+                            </div>
+                            <p class="text-gray-600 mt-2">Net Total: $<span class="netTotal">${item.quantity * item.price}</span></p>
+                        </div>
+                    </div>`;
+            });
+            document.getElementById("totalMRP").textContent = totalMRP;
+            document.getElementById("totalAmount").textContent = totalAmount;
+        }
+
+        function confirmOrder() {
+        fetch("/fashionHunter/User/update-cart", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ cart })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => alert("Order confirmed!"))
+        .catch(error => console.error("Error:", error));
+    }
+    
+        document.addEventListener("DOMContentLoaded", renderCart);
+    </script>
+    
+    
+    
+
+</body>
+</html>
